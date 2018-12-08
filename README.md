@@ -25,3 +25,23 @@ Run Vim script as AWS Lambda application
 * `prepare` - uploads archive file to S3
 * `create` - creates AWS Lambda function
 * `deploy` - updates AWS Lambda function
+
+---
+
+Vim でも Lambda やるぞ！
+---
+
+* AWS アカウントが必要
+* S3 のバケットが必要
+* IAM で Lambda と CloudWatch の権限が必要
+* Amazon Linux 2 または RHEL 系の Linux でしか動かないよ
+
+環境変数
+---
+
+英語で書いてあるやつを使うので設定しておいて
+
+タスク
+---
+
+いろいろあるので英語の方を見ておいて
