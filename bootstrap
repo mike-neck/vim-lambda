@@ -1,0 +1,30 @@
+#!bin/vim -u
+
+:let header = system("mktemp")[:-2]
+:let request = "http://" . $AWS_LAMBDA_RUNTIME_API . "/2018-06-01/runtime/invocation/next"
+
+:while 1
+:  let event = system("curl -L -D " . header . " " . request)
+:  let payload = "{\"receive\":" . event . "}"
+
+:  let headers = readfile(header)
+:  let id = ""
+:  for item in headers
+:    if item =~ "Lambda-Runtime-Aws-Request-Id"
+:      let id = substitute(item, "Lambda-Runtime-Aws-Request-Id", "", "g")
+:      let id = substitute(id, ":", "", "g")
+:      let id = substitute(id, " ", "", "g")
+:    endif
+:  endfor
+
+:  echo "==request=="
+:  echo event
+:  echo "==id=="
+:  echo id
+
+:  let response = "http://" . $AWS_LAMBDA_RUNTIME_API . "/2018-06-01/runtime/invocation/" . id . "/response"
+:  echo response
+:  let result = system("curl " . response . " -d '" . payload . "'")
+:endwhile
+
+:exit
