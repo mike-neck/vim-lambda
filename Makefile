@@ -1,7 +1,7 @@
 WORK_DIR := $(shell pwd)
 RELEASE_DIR := $(WORK_DIR)/release
 
-.PHONY: dep vim git-get build prepare create deploy
+.PHONY: dep vim git-get libt bootstrap build prepare create deploy
 
 dep:
 	sudo yum install -y git ncurses-devel
@@ -15,10 +15,11 @@ vim:
 	./configure --with-features=normal --prefix=$(RELEASE_DIR) && \
 	make && \
 	make install
-	cd $(RELEASE_DIR) && \
-	mkdir lib && \
-	ldd bin/vim | grep libtinfo | awk '{print $3}' >> deps && \
-	while read line; do cp $item lib/
+
+libt:
+	$(WORK_DIR)/script/copy-libt.sh
+
+bootstrap:
 	cp bootstrap $(RELEASE_DIR)
 
 build:
