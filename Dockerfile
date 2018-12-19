@@ -9,4 +9,5 @@ RUN yum update -y && \
   python -m ensurepip && \
   ln -s /usr/bin/pip3 /usr/bin/pip && \
   pip install --upgrade pip && \
-  pip install awscli
+  pip install awscli && \
+  sed -i "s/python/python2/g" /usr/bin/yum
