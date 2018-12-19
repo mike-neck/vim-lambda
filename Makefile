@@ -14,7 +14,7 @@ git-get:
 	git clone https://github.com/vim/vim.git
 
 vim:
-	@eccho make vim binary
+	@echo make vim binary
 	cd vim && \
 	./configure --with-features=normal --prefix=$(RELEASE_DIR) && \
 	make && \
