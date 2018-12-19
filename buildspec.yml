@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - make dep
+  pre_build:
+    commands:
+      - make git-get
+  build:
+    commands:
+      - make vim
+      - make libt
+      - make bootstrap
+  post_build:
+    commands:
+      - ls -l release/
+      - cat bootstrap
+
+artifacts:
+  files:
+    - bin/vim
+    - lib/*
+    - bootstrap
+  name: vim-${date +%Y-%m-%d'T'%H':'%M}
+  base-directory: release
