@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - make dep
+      - yum install -y git ncurses-devel
+      - yum groupinstall -y "Development Tools"
   pre_build:
     commands:
       - make git-get
