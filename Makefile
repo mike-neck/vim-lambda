@@ -22,6 +22,7 @@ vim:
 
 libt:
 	@echo copy libtinfo
+	ls $(WORK_DIR)/script
 	$(WORK_DIR)/script/copy-libt.sh
 
 bootstrap:
