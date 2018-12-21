@@ -22,8 +22,9 @@ vim:
 
 libt:
 	@echo copy libtinfo
-	ls $(WORK_DIR)/script
-	$(WORK_DIR)/script/copy-libt.sh
+	mkdir -p $(RELEASE_DIR)/lib
+	ldd ${RELEASE_DIR}/bin/vim | grep libtinfo | awk '{system("cp "$3" release/lib")}'
+	ls release/lib
 
 bootstrap:
 	@echo copy bootstrap
