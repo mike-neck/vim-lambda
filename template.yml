@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: vim lambda application
+
+Resources:
+  Vim:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: release/
+      Handler: vim
+      Runtime: provided
+      Tracing: active
+
+Outputs:
+  Vim:
+    Description: "vim lambda"
+    Value: !GetAtt Vim.Arn
+  VimIamRole:
+    Description: "Vim IAM Role"
+    Value: !GetAtt VimRole.Arn

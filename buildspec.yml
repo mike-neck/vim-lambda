@@ -17,11 +17,10 @@ phases:
     commands:
       - ls -l release/
       - cat bootstrap
+      - aws cloudformation package --template-file template.yml --s3-bucket ${BUCKET} --output-template-file deploy.yml
 
 artifacts:
+  type: zip
   files:
-    - bin/vim
-    - lib/*
-    - bootstrap
-  name: vim-${date +%Y-%m-%d'T'%H':'%M}
-  base-directory: release
+    - template.yml
+    - deploy.yml
