@@ -9,7 +9,6 @@ Resources:
       CodeUri: release/
       Handler: vim
       Runtime: provided
-      Tracing: active
 
 Outputs:
   Vim:
