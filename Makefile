@@ -29,6 +29,7 @@ libt:
 bootstrap:
 	@echo copy bootstrap
 	cp bootstrap $(RELEASE_DIR)
+	chmod +x $(RELEASE_DIR)/bootstrap
 
 build:
 	@echo archive files
